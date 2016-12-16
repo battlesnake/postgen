@@ -16,7 +16,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			}
 
 			public string ToString(string indent) {
-				return new string(indent, level) + text;
+				return String.Concat(Enumerable.Repeat(indent, level)) + text;
 			}
 
 			public override string ToString() {
@@ -52,7 +52,10 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			for (int i = 0; i <= last; i++) {
 				Block block = ar[i];
 				res.lines.AddRange(block.lines);
-				res.lines.Last().text += (i == last ? terminator : delimiter);
+				int last_line = res.lines.Count;
+				Line tmp = res.lines[last_line];
+				tmp.text += (i == last ? terminator : delimiter);
+				res.lines[last_line] = tmp;
 			}
 			return res;
 		}
@@ -101,7 +104,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		/* Append a block, increasing the indent level of the block's lines */
-		public Block Indent(Block block, int level = 1) {
+		public void Indent(Block block, int level = 1) {
 			foreach (var line in block.lines) {
 				Add(line.level + level, line.text);
 			}
