@@ -9,7 +9,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			return Dispatch(type as dynamic);
 		}
 
-		private static string Dispatch(Language.BasicType type) {
+		private static string Dispatch(Language.Type.Basic type) {
 			return type.name;
 		}
 

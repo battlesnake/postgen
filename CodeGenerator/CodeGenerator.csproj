@@ -34,7 +34,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Table.cs" />
-    <Compile Include="Template.cs" />
     <Compile Include="Util\Quote.cs" />
     <Compile Include="Code\Block.cs" />
     <Compile Include="TableConstraint.cs" />
@@ -45,6 +44,8 @@
     <Compile Include="Function.cs" />
     <Compile Include="ColumnList.cs" />
     <Compile Include="Tables.cs" />
+    <Compile Include="Template.cs" />
+    <Compile Include="Functions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

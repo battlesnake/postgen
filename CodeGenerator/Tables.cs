@@ -7,7 +7,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 	
 		public static Block Generate(IEnumerable<Language.Table> tables) {
 			return Block.ConcatList(from table in tables
-				                       select Table.Generate(table), ";", ";");
+				                       select Table.Generate(table), ";", ";", true);
 		}
 
 	}

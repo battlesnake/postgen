@@ -1,16 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Template1 = Battlesnake.PostGen.CodeGenerator.Template<string>;
+using Template2 = Battlesnake.PostGen.CodeGenerator.Template<string, string>;
+
 namespace Battlesnake.PostGen.CodeGenerator {
 
 	public static class TableColumnConstraint {
 
-		private static readonly Template named = new Template("CONSTRAINT %I");
-		private static readonly Template check = new Template("CHECK (%s)");
-		private static readonly Template default_ = new Template("DEFAULT %s");
-		private static readonly Template foreign = new Template("REFERENCES %I (%I)");
-		private static readonly Template foreign_onupdate = new Template("ON UPDATE %s");
-		private static readonly Template foreign_ondelete = new Template("ON DELETE %s");
+		private static readonly Template1 named = new Template("CONSTRAINT %I");
+		private static readonly Template1 check = new Template("CHECK (%s)");
+		private static readonly Template1 default_ = new Template("DEFAULT %s");
+		private static readonly Template2 foreign = new Template("REFERENCES %I (%I)");
+		private static readonly Template1 foreign_onupdate = new Template("ON UPDATE %s");
+		private static readonly Template1 foreign_ondelete = new Template("ON DELETE %s");
 		private static readonly Dictionary<Language.Table.Column.Constraint.ForeignKey.Action, string> foreign_actions = new Dictionary<Battlesnake.PostGen.Language.Table.Column.Constraint.ForeignKey.Action, string> {
 			{ Language.Table.Column.Constraint.ForeignKey.Action.Restrict, "RESTRICT" },
 			{ Language.Table.Column.Constraint.ForeignKey.Action.Cascade, "CASCADE" },
@@ -50,15 +53,15 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		private static Block Dispatch(Language.Table.Column.Constraint.NotNull constraint) {
-			return not_null;
+			return (string)not_null;
 		}
 
 		private static Block Dispatch(Language.Table.Column.Constraint.PrimaryKey constraint) {
-			return primary_key;
+			return (string)primary_key;
 		}
 
 		private static Block Dispatch(Language.Table.Column.Constraint.Unique constraint) {
-			return unique;
+			return (string)unique;
 		}
 
 	}

@@ -16,7 +16,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			}
 
 			public string ToString(string indent) {
-				return String.Concat(Enumerable.Repeat(indent, level)) + text;
+				return string.IsNullOrEmpty(text) ? "" : String.Concat(Enumerable.Repeat(indent, level)) + text;
 			}
 
 			public override string ToString() {
@@ -60,7 +60,12 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		/* Concatenate a series of blocks, delimiting them and terminating the last one */
-		public static Block ConcatList(IEnumerable<Block> blocks, string delimiter = ",", string terminator = "") {
+		public static Block ConcatList(
+			IEnumerable<Block> blocks,
+			string delimiter,
+			string terminator,
+			bool blank_lines = false
+		) {
 			var res = new Block();
 			Block[] ar = blocks.Where(block => block != null).ToArray();
 			if (ar.Length == 0) {
@@ -68,6 +73,9 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			}
 			int last = ar.Length - 1;
 			for (int i = 0; i <= last; i++) {
+				if (blank_lines && i > 0) {
+					res++;
+				}
 				Block block = ar[i];
 				res.lines.AddRange(block.lines);
 				int last_line = res.lines.Count - 1;
@@ -162,6 +170,11 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			return self;
 		}
 
+		public static Block operator ++(Block self) {
+			self.lines.Add(new Line(0, null));
+			return self;
+		}
+
 		public string ToString(string indent, string newline = "\n") {
 			return String.Join(newline, lines.Select(line => line.ToString(indent)));
 		}
@@ -172,6 +185,10 @@ namespace Battlesnake.PostGen.CodeGenerator {
 
 		public override string ToString() {
 			return ToString("\t", "\n");
+		}
+
+		public static implicit operator string(Block Block) {
+			return Block.ToString();
 		}
 
 	}

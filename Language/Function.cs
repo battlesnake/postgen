@@ -14,10 +14,10 @@ namespace Battlesnake.PostGen.Language {
 			}
 
 			public string name;
-			public BasicType type;
+			public Type.Basic type;
 			public Direction direction;
 
-			public Argument(string name, BasicType type, Direction direction = Direction.In) {
+			public Argument(string name, Type.Basic type, Direction direction = Direction.In) {
 				this.name = name;
 				this.type = type;
 				this.direction = direction;
@@ -55,7 +55,7 @@ namespace Battlesnake.PostGen.Language {
 
 		public string name;
 		public Arguments arguments;
-		public BasicType type;
+		public Type.Basic type;
 		public Code code;
 		public Security security;
 		public List<string> search_path;
@@ -65,7 +65,7 @@ namespace Battlesnake.PostGen.Language {
 
 		public Function(
 			string name,
-			BasicType type,
+			Type.Basic type,
 			Arguments arguments,
 			Code code,
 			Security security = Security.Invoker,
