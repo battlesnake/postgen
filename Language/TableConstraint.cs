@@ -9,7 +9,7 @@ namespace Battlesnake.PostGen.Language {
 		public abstract class Constraint {
 			public string name;
 
-			public Constraint(string name = null) {
+			public Constraint(string name) {
 				this.name = name;
 			}
 
@@ -63,14 +63,16 @@ namespace Battlesnake.PostGen.Language {
 				public List<Element> elements;
 				public Expression where;
 
-				public Exclude(Index.Method index_method, IEnumerable<Element> elements, Expression where = null) {
+				public Exclude(string name, Index.Method index_method, IEnumerable<Element> elements, Expression where = null)
+					: base(name) {
 					this.index_method = index_method;
 					this.elements = elements.ToList();
 					this.where = where;
 				}
 
-				public Exclude(Index.Method index_method, Expression where, params Element[] elements)
+				public Exclude(string name, Index.Method index_method, Expression where, params Element[] elements)
 					: this(
+						name,
 						index_method,
 						elements,
 						where

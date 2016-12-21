@@ -15,6 +15,11 @@ Different generators may target different database engines.
 Personally, I only care about implementing for Postgres.
 
 
+## Demo
+
+Demonstrations of various generators and other functionality, used for manual testing during development.
+
+
 ## Paradigm
 
 Classes I can use for designing my data structures, in a way which intuitively maps to how I want to use them.

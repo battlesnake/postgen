@@ -7,7 +7,7 @@
 			public abstract class Constraint {
 				public string name;
 
-				public Constraint(string name = null) {
+				public Constraint(string name) {
 					this.name = name;
 				}
 
@@ -21,13 +21,13 @@
 				}
 
 				public class NotNull: Constraint {
-					public NotNull(string name = null)
+					public NotNull(string name)
 						: base(name) {
 					}
 				}
 
 				public class Unique: Constraint {
-					public Unique(string name = null)
+					public Unique(string name)
 						: base(name) {
 					}
 				}
@@ -42,7 +42,7 @@
 				}
 
 				public class PrimaryKey: Constraint {
-					public PrimaryKey(string name = null)
+					public PrimaryKey(string name)
 						: base(name) {
 					}
 				}

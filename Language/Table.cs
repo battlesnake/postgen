@@ -7,7 +7,7 @@ namespace Battlesnake.PostGen.Language {
 	public partial class Table {
 		public string name;
 		public List<Column> columns;
-		public List<Constraint> constraints;
+		public List<Constraint> constraints = new List<Constraint>();
 
 		public Column this [string name] {
 			get {
@@ -18,7 +18,9 @@ namespace Battlesnake.PostGen.Language {
 		public Table(string name, IEnumerable<Column> columns, IEnumerable<Constraint> constraints = null) {
 			this.name = name;
 			this.columns = columns.ToList();
-			this.constraints = constraints?.ToList();
+			if (constraints != null) {
+				this.constraints.AddRange(constraints);
+			}
 		}
 
 		public Table(string name, params Column[] columns)

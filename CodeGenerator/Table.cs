@@ -6,15 +6,16 @@ namespace Battlesnake.PostGen.CodeGenerator {
 	
 	public static class Table {
 
-		public static readonly Template create_table = new Template("CREATE TABLE %I (");
+		public static readonly Template create_table_open = new Template("CREATE TABLE %I (");
+		public static readonly Template create_table_close = new Template(")");
 
 		public static Block Generate(Language.Table table) {
 			var block = new Block();
 			var columns = table.columns.Select(column => TableColumn.Generate(column));
 			var constraints = table.constraints.Select(constraint => TableConstraint.Generate(constraint));
-			block.Add(create_table[table.name]);
-			block.Indent(Block.ConcatList(columns.Concat(constraints)));
-			block.Add(");");
+			block += create_table_open[table.name];
+			block %= Block.ConcatList(columns.Concat(constraints));
+			block += create_table_close;
 			return block;
 		}
 	}

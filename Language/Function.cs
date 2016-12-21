@@ -4,40 +4,40 @@ using System.Linq;
 
 namespace Battlesnake.PostGen.Language {
 
-	public class Argument {
-		public enum Direction {
-			Default = 0,
-			In = 1,
-			Out = 2,
-			InOut = In | Out
-		}
-
-		public string name;
-		public BasicType type;
-		public Direction direction;
-
-		public Argument(string name, BasicType type, Direction direction = Direction.Default) {
-			this.name = name;
-			this.type = type;
-			this.direction = direction;
-		}
-	}
-
-	public class Arguments {
-		public List<Argument> list { get; set; }
-
-		public Arguments(IEnumerable<Argument> value) {
-			list = value.ToList();
-		}
-
-		public Arguments(params Argument[] value)
-			: this(value.AsEnumerable()) {
-		}
-	}
-
 	public class Function {
+		
+		public class Argument {
+			public enum Direction {
+				In = 0,
+				Out,
+				InOut
+			}
+
+			public string name;
+			public BasicType type;
+			public Direction direction;
+
+			public Argument(string name, BasicType type, Direction direction = Direction.In) {
+				this.name = name;
+				this.type = type;
+				this.direction = direction;
+			}
+		}
+
+		public class Arguments {
+			public List<Argument> list { get; set; }
+
+			public Arguments(IEnumerable<Argument> value) {
+				list = value.ToList();
+			}
+
+			public Arguments(params Argument[] value)
+				: this(value.AsEnumerable()) {
+			}
+		}
+
 		public enum Volatility {
-			Volatile,
+			Volatile = 0,
 			Immutable,
 			Stable,
 		}
@@ -48,7 +48,7 @@ namespace Battlesnake.PostGen.Language {
 		}
 
 		public enum Parallel {
-			Unsafe,
+			Unsafe = 0,
 			Restricted,
 			Safe,
 		}
