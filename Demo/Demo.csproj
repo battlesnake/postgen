@@ -37,6 +37,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tables.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="Triggers.cs" />
+    <Compile Include="Auto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

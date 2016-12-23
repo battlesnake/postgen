@@ -46,6 +46,9 @@
     <Compile Include="Tables.cs" />
     <Compile Include="Template.cs" />
     <Compile Include="Functions.cs" />
+    <Compile Include="Trigger.cs" />
+    <Compile Include="Triggers.cs" />
+    <Compile Include="Auto.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

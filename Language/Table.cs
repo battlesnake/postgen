@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Battlesnake.PostGen.Language {
 
-	public partial class Table {
+	public partial class Table : Tags.TopLevel {
 		public string name;
 		public List<Column> columns;
 		public List<Constraint> constraints = new List<Constraint>();

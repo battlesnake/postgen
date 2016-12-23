@@ -38,7 +38,7 @@ Example:
 
 A big difference between this and other ORMs is that this will never actually become an ORM.
 It is focussed on improving the quality and consistency of, and reducing the development/testing time of procedural programming in the database.
-The fact that functions defined using Language.Function can be used to generate SQL-calling wrappers in other programming languages is a very nice bonus.
+The fact that functions defined using Language.Function can be used to generate strictly-typed SQL-calling wrappers (e.g. for prepared statements) in other programming languages is a very nice bonus.
 
 
  — Mark K Cowan

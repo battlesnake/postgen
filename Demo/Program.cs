@@ -17,11 +17,22 @@ namespace Demo {
 			Console.WriteLine(blk.ToString("    "));
 		}
 
-		public static void Main(string[] args) {
+		public static void WriteSeparately() {
 			WriteSection("Tables");
 			WriteBlock(Tables.Make());
 			WriteSection("Functions");
 			WriteBlock(Functions.Make());
+			WriteSection("Trigger");
+			WriteBlock(Triggers.Make());
+		}
+
+		public static void WriteDynamically() {
+			WriteSection("All");
+			WriteBlock(Auto.Make());
+		}
+
+		public static void Main(string[] args) {
+			WriteDynamically();
 		}
 
 	}

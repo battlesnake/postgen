@@ -1,11 +1,12 @@
-﻿using Battlesnake.PostGen.Language;
+﻿using System.Collections.Generic;
+using Battlesnake.PostGen.Language;
 using Block = Battlesnake.PostGen.CodeGenerator.Block;
 
 namespace Demo {
 
 	public static class Tables {
-	
-		public static Block Make() {
+
+		public static IEnumerable<Table> Data() {
 			var types = new Table(
 				            "potato_type",
 				            new [] {
@@ -17,9 +18,10 @@ namespace Demo {
 						}
 					)
 				});
-			var table = new Table("potatoes",
+			var table = new Table("potato",
 				            new [] {
 					new Table.Column("potato_id", new Type.Basic("UUID"), new Table.Column.Constraint[] {
+							new Table.Column.Constraint.PrimaryKey("potato_pk"),
 							new Table.Column.Constraint.Default(null, new Expression.Raw("uuid_generate_v4()"))
 						}),
 					new Table.Column("potato_type", new Type.Basic("TEXT"), new Table.Column.Constraint[] {
@@ -33,10 +35,13 @@ namespace Demo {
 					new Table.Column("potato_weight", new Type.Basic("FLOAT"))
 				},
 				            new Table.Constraint[] {
-					new Table.Constraint.Check(null, new Expression.Raw("potato_weight > 0.8"))
+					new Table.Constraint.Check(null, new Expression.Raw("potato_weight > 0.3"))
 				});
-			table.constraints.Add(new Table.Constraint.PrimaryKey("pk", table.columns[0]));
-			return Battlesnake.PostGen.CodeGenerator.Tables.Generate(new [] { types, table });
+			return new [ ] { types, table };
+		}
+
+		public static Block Make() {
+			return Battlesnake.PostGen.CodeGenerator.Tables.Generate(Data());
 		}
 
 	}

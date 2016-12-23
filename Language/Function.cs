@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Battlesnake.PostGen.Language {
 
-	public class Function {
+	public class Function : Tags.TopLevel {
 		
 		public class Argument {
 			public enum Direction {
@@ -25,10 +25,10 @@ namespace Battlesnake.PostGen.Language {
 		}
 
 		public class Arguments {
-			public List<Argument> list { get; set; }
+			public List<Argument> list = new List<Argument>();
 
 			public Arguments(IEnumerable<Argument> value) {
-				list = value.ToList();
+				list.AddRange(value);
 			}
 
 			public Arguments(params Argument[] value)
@@ -54,7 +54,7 @@ namespace Battlesnake.PostGen.Language {
 		}
 
 		public string name;
-		public Arguments arguments;
+		public Arguments arguments = new Arguments();
 		public Type.Basic type;
 		public Code code;
 		public Security security;
@@ -76,7 +76,7 @@ namespace Battlesnake.PostGen.Language {
 		) {
 			this.name = name;
 			this.type = type;
-			this.arguments = arguments;
+			this.arguments = arguments ?? new Arguments();
 			this.code = code;
 			this.security = security;
 			this.search_path = search_path?.ToList();

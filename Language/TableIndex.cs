@@ -6,7 +6,7 @@ namespace Battlesnake.PostGen.Language {
 
 	public partial class Table {
 	
-		public class Index {
+		public class Index : Tags.TopLevel {
 
 			public enum Method {
 				B_tree = 0,

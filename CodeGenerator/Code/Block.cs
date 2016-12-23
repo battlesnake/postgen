@@ -45,7 +45,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		private void Add(int level, string line) {
-			if (line != null) {
+			if (line != null || level > 0) {
 				lines.Add(new Line(level, line));
 			}
 		}
