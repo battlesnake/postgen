@@ -44,7 +44,8 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		private static Block Dispatch(Language.Table.Column.Constraint.ForeignKey constraint) {
-			var res = new Block(foreign[constraint.reftable.name, constraint.refcolumn.name]);
+			var res = new Block();
+			res += foreign[constraint.reftable.name, constraint.refcolumn.name];
 			var actions = new Block();
 			actions += foreign_onupdate[foreign_actions[constraint.on_update]];
 			actions += foreign_ondelete[foreign_actions[constraint.on_delete]];

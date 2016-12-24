@@ -23,7 +23,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		public Block Generate() {
-			return Block.ConcatList(
+			return Block.Concat(
 				from element in elements
 				select (Dispatch(element as dynamic) as Block),
 				";",
@@ -38,6 +38,10 @@ namespace Battlesnake.PostGen.CodeGenerator {
 
 		private static Block Dispatch(Language.Function function) {
 			return Function.Generate(function);
+		}
+
+		private static Block Dispatch(Language.Table.Index trigger) {
+			return TableIndex.Generate(trigger);
 		}
 
 		private static Block Dispatch(Language.Trigger trigger) {

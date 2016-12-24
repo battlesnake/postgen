@@ -15,7 +15,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			var columns = table.columns.Select(column => TableColumn.Generate(column));
 			var constraints = table.constraints.Select(constraint => TableConstraint.Generate(constraint));
 			block += create_table_open[table.name];
-			block %= Block.ConcatList(columns.Concat(constraints), ",", "");
+			block %= Block.Concat(columns.Concat(constraints), ",", "");
 			block += create_table_close;
 			return block;
 		}

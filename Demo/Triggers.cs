@@ -35,7 +35,7 @@ namespace Demo {
 		}
 
 		public static Block Make() {
-			return Block.ConcatList(new [] { Battlesnake.PostGen.CodeGenerator.Triggers.Generate(Data()) }, ";", ";", true);
+			return Block.Concat(new [] { Battlesnake.PostGen.CodeGenerator.Triggers.Generate(Data()) }, ";", ";", true);
 		}
 	}
 

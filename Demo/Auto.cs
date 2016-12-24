@@ -10,6 +10,7 @@ namespace Demo {
 			var auto = new Battlesnake.PostGen.CodeGenerator.Auto();
 			auto += Tables.Data();
 			auto += Functions.Data();
+			auto += Indexes.Data();
 			auto += Triggers.Data();
 			return auto.Generate();
 		}

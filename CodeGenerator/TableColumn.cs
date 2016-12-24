@@ -10,7 +10,8 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		public static Block Generate(Language.Table.Column column) {
 			var block = new Block();
 			block += column_name_type[column.name, TypeName.Generate(column.type)];
-			block %= Block.Concat(column.constraints.Select(constraint => TableColumnConstraint.Generate(constraint)));
+			block %= from constraint in column.constraints
+			         select TableColumnConstraint.Generate(constraint);
 			return block;
 		}
 

@@ -45,17 +45,9 @@ namespace Battlesnake.PostGen {
 			return "\"" + s.Replace("\"", "\"\"") + "\"";
 		}
 
-		public static string Identifier<T>(T s) {
-			return Identifier(s?.ToString());
-		}
-
 		public static string Literal(string s) {
 			/* postgres:/src/backend/utils/adt/quote.c:quote_literal_internal */
 			return s == null ? null : (s.IndexOf('\\') >= 0 ? "E" : "") + escape_literal.Replace(s, m => m.Value + m.Value);
-		}
-
-		public static string Literal<T>(T s) {
-			return Literal(s?.ToString());
 		}
 
 		public static string Nullable(string s) {
@@ -63,15 +55,24 @@ namespace Battlesnake.PostGen {
 			return s == null ? "NULL" : Literal(s);
 		}
 
-		public static string Nullable<T>(T s) {
-			return Nullable(s?.ToString());
-		}
-
 		public static string Verbatim(string s) {
 			return s ?? "";
 		}
 
-		public static string Verbatim<T>(T s) {
+		/* Untyped versions */
+		private static string Identifier<T>(T s) {
+			return Identifier(s?.ToString());
+		}
+
+		private  static string Literal<T>(T s) {
+			return Literal(s?.ToString());
+		}
+
+		private static string Nullable<T>(T s) {
+			return Nullable(s?.ToString());
+		}
+
+		private static string Verbatim<T>(T s) {
 			return Verbatim(s?.ToString());
 		}
 

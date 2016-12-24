@@ -60,8 +60,9 @@ namespace Battlesnake.PostGen.CodeGenerator {
 				];
 			} else {
 				/* TODO Use a generator rather than ToString TODO */
-				var list = new Block(from element in elements
-					                    select ExcludeElementToString(element));
+				var list = new Block();
+				res += from element in elements
+				       select ExcludeElementToString(element);
 				res += exclude_many_open[constraint.index_method.ToString()];
 				res %= list;
 				res += exclude_many_close;
@@ -73,11 +74,12 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		}
 
 		private static Block Dispatch(Language.Table.Constraint.ForeignKey constraint) {
-			var res = new Block(foreign[
-					          ColumnList.Generate(constraint.columns),
-					          constraint.reftable.name,
-					          ColumnList.Generate(constraint.refcolumns)
-				          ]);
+			var res = new Block();
+			res += foreign[
+				ColumnList.Generate(constraint.columns),
+				constraint.reftable.name,
+				ColumnList.Generate(constraint.refcolumns)
+			];
 			var actions = new Block();
 			actions += foreign_onupdate[foreign_actions[constraint.on_update]];
 			actions += foreign_ondelete[foreign_actions[constraint.on_delete]];

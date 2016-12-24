@@ -22,6 +22,8 @@ namespace Demo {
 			WriteBlock(Tables.Make());
 			WriteSection("Functions");
 			WriteBlock(Functions.Make());
+			WriteSection("Indexes");
+			WriteBlock(Indexes.Make());
 			WriteSection("Trigger");
 			WriteBlock(Triggers.Make());
 		}

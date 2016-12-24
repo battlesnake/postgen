@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Battlesnake.PostGen.CodeGenerator {
+﻿namespace Battlesnake.PostGen.CodeGenerator {
 
 	public static class Expression {
 
