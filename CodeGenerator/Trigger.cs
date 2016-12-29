@@ -38,7 +38,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		};
 		public static readonly Dictionary<Language.Trigger.Scope, string> scope_type = new Dictionary<Language.Trigger.Scope, string> {
 			{ Language.Trigger.Scope.Row, "ROW" },
-			{ Language.Trigger.Scope.Statement, "Statement" }
+			{ Language.Trigger.Scope.Statement, "STATEMENT" }
 		};
 
 		public static Block Generate(Language.Trigger trigger) {

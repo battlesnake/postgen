@@ -14,14 +14,14 @@ namespace Demo {
 				new Table.Index(
 					null,
 					table,
-					new [] { table.columns.Skip(2).First() },
+					table.columns.Skip(2).First(),
 					false,
 					new Expression.Raw("type == 'maris piper'")
 				),
 				new Table.Index(
 					"potato_weight_index",
 					table,
-					new [] { table.columns.Skip(1).First() },
+					table.columns.Skip(1).First(),
 					false,
 					null,
 					Table.Index.Method.Hash

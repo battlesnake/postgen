@@ -96,6 +96,14 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			return res;
 		}
 
+		/* Indent operator (pure) */
+		public static Block operator >>(Block self, int amount) {
+			var res = new Block();
+			res.lines.AddRange(from line in self.lines
+				                  select line >> amount);
+			return res;
+		}
+
 		/* Add operators (mutates LHS) */
 		public static Block operator +(Block self, string line) {
 			if (line != null) {
