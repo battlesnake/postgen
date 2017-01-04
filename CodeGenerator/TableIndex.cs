@@ -17,6 +17,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		public static readonly Template1 using_method = new Template("USING %s (");
 		public static readonly Template3 layer_expression = new Template("(%s) %s %s");
 		public static readonly Template3 layer_column = new Template("%I %s %s");
+		public static readonly Template layer_delimiter = new Template(",");
 		public static readonly Template after_layers = new Template(")");
 		public static readonly Dictionary<Boolean, string> index_type = new Dictionary<bool, string> {
 			{ false, "INDEX" },
@@ -49,7 +50,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			res %= on_table[index.table.name];
 			res %= using_method[index_method[index.method]];
 			res %= Block.Concat(from layer in index.layers
-				                   select TableIndexLayer.Generate(layer), ", ", "") >> 1;
+				                   select TableIndexLayer.Generate(layer), layer_delimiter, "") >> 1;
 			res %= after_layers;
 			return res;
 		}
