@@ -1,7 +1,5 @@
 # PostGen
 
-> MongoDB is like /dev/null except it occasionally stores data
-
 ## Language
 
 Classes mapping to SQL language for defining tables and indexes.
