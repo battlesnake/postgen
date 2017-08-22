@@ -7,7 +7,7 @@ namespace Demo {
 	public static class Functions {
 
 		public static IEnumerable<Function> Data() {
-			return new [] { 
+			return new[] {
 				new Function(
 					"potato_on_change",
 					new Type.Basic("TRIGGER"),

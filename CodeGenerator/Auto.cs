@@ -1,7 +1,6 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 using Battlesnake.PostGen.Language.Tags;
-using System.Runtime.Serialization.Formatters;
 
 namespace Battlesnake.PostGen.CodeGenerator {
 
@@ -9,7 +8,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 
 		private List<TopLevel> elements = new List<TopLevel>();
 
-		public Auto() {			
+		public Auto() {
 		}
 
 		public static Auto operator +(Auto self, IEnumerable<TopLevel> items) {
@@ -46,6 +45,10 @@ namespace Battlesnake.PostGen.CodeGenerator {
 
 		private static Block Dispatch(Language.Trigger trigger) {
 			return Trigger.Generate(trigger);
+		}
+
+		private static Block Dispatch(Language.Type.Composite type) {
+			return Type.Generate(type);
 		}
 
 	}

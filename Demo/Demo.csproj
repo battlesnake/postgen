@@ -40,6 +40,7 @@
     <Compile Include="Triggers.cs" />
     <Compile Include="Auto.cs" />
     <Compile Include="Indexes.cs" />
+    <Compile Include="Types.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

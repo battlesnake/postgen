@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 using Template1 = Battlesnake.PostGen.CodeGenerator.Template<string>;

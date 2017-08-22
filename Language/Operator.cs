@@ -1,4 +1,4 @@
-﻿namespace Battlesnake.PostGen.Language {
+namespace Battlesnake.PostGen.Language {
 
 	public enum UnaryOperator {
 		IsNull,

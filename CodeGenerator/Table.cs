@@ -4,7 +4,7 @@ using Battlesnake.PostGen;
 using Template1 = Battlesnake.PostGen.CodeGenerator.Template<string>;
 
 namespace Battlesnake.PostGen.CodeGenerator {
-	
+
 	public static class Table {
 
 		public static readonly Template1 create_table_open = new Template("CREATE TABLE %I (");

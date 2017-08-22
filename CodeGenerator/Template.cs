@@ -1,4 +1,4 @@
-﻿/* Provided for you to copy to other units, for convenience */
+/* Provided for you to copy to other units, for convenience */
 using Template1 = Battlesnake.PostGen.CodeGenerator.Template<string>;
 using Template2 = Battlesnake.PostGen.CodeGenerator.Template<string, string>;
 using Template3 = Battlesnake.PostGen.CodeGenerator.Template<string, string, string>;

@@ -11,7 +11,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			var block = new Block();
 			block += column_name_type[column.name, TypeName.Generate(column.type)];
 			block %= from constraint in column.constraints
-			         select TableColumnConstraint.Generate(constraint);
+					 select TableColumnConstraint.Generate(constraint);
 			return block;
 		}
 

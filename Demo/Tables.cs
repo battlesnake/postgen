@@ -8,8 +8,8 @@ namespace Demo {
 
 		public static IEnumerable<Table> Data() {
 			var types = new Table(
-				            "potato_type",
-				            new [] {
+							"potato_type",
+							new[] {
 					new Table.Column(
 						"type",
 						new Type.Basic("TEXT"),
@@ -19,7 +19,7 @@ namespace Demo {
 					)
 				});
 			var table = new Table("potato",
-				            new [] {
+							new[] {
 					new Table.Column("potato_id", new Type.Basic("UUID"), new Table.Column.Constraint[] {
 							new Table.Column.Constraint.PrimaryKey("potato_pk"),
 							new Table.Column.Constraint.Default(null, new Expression.Raw("uuid_generate_v4()"))
@@ -34,10 +34,10 @@ namespace Demo {
 						}),
 					new Table.Column("potato_weight", new Type.Basic("FLOAT"))
 				},
-				            new Table.Constraint[] {
+							new Table.Constraint[] {
 					new Table.Constraint.Check(null, new Expression.Raw("potato_weight > 0.3"))
 				});
-			return new [ ] { types, table };
+			return new[] { types, table };
 		}
 
 		public static Block Make() {

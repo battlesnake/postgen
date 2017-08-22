@@ -20,18 +20,18 @@ namespace Battlesnake.PostGen.CodeGenerator {
 		private static readonly Template function_code_open = new Template("AS $postgen$");
 		private static readonly Template function_code_close = new Template("$postgen$");
 		private static readonly Dictionary<Language.Function.Volatility, string> function_volatility = new Dictionary<Battlesnake.PostGen.Language.Function.Volatility, string> {
-			{ Language.Function.Volatility.Immutable, "IMMUTABLE" },	
-			{ Language.Function.Volatility.Stable, "STABLE" },	
-			{ Language.Function.Volatility.Volatile, "VOLATILE" },	
+			{ Language.Function.Volatility.Immutable, "IMMUTABLE" },
+			{ Language.Function.Volatility.Stable, "STABLE" },
+			{ Language.Function.Volatility.Volatile, "VOLATILE" },
 		};
 		private static readonly Dictionary<Language.Function.Parallel, string> function_parallels = new Dictionary<Battlesnake.PostGen.Language.Function.Parallel, string> {
-			{ Language.Function.Parallel.Restricted, "RESTRICTED" },	
-			{ Language.Function.Parallel.Safe, "SAFE" },	
-			{ Language.Function.Parallel.Unsafe, "UNSAFE" },	
+			{ Language.Function.Parallel.Restricted, "RESTRICTED" },
+			{ Language.Function.Parallel.Safe, "SAFE" },
+			{ Language.Function.Parallel.Unsafe, "UNSAFE" },
 		};
 		private static readonly Dictionary<Language.Function.Security, string> function_securities = new Dictionary<Battlesnake.PostGen.Language.Function.Security, string> {
-			{ Language.Function.Security.Definer, "DEFINER" },	
-			{ Language.Function.Security.Invoker, "INVOKER" },	
+			{ Language.Function.Security.Definer, "DEFINER" },
+			{ Language.Function.Security.Invoker, "INVOKER" },
 		};
 
 		public static Block Generate(Language.Function function) {
@@ -61,7 +61,7 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			// Analysis disable once MemberHidesStaticFromOuterClass
 			public static string Generate(Language.Function.Arguments arguments) {
 				return String.Join(", ", from argument in arguments.list
-					                        select Argument.Generate(argument));
+										 select Argument.Generate(argument));
 			}
 
 		}
@@ -70,9 +70,9 @@ namespace Battlesnake.PostGen.CodeGenerator {
 
 			private static readonly Template3 function_argument = new Template("%s %s %s");
 			private static readonly Dictionary<Language.Function.Argument.Direction, string> function_argument_direction = new Dictionary<Battlesnake.PostGen.Language.Function.Argument.Direction, string> {
-				{ Language.Function.Argument.Direction.In, "IN" },	
-				{ Language.Function.Argument.Direction.Out, "OUT" },	
-				{ Language.Function.Argument.Direction.InOut, "INOUT" },	
+				{ Language.Function.Argument.Direction.In, "IN" },
+				{ Language.Function.Argument.Direction.Out, "OUT" },
+				{ Language.Function.Argument.Direction.InOut, "INOUT" },
 			};
 
 			// Analysis disable once MemberHidesStaticFromOuterClass
@@ -81,6 +81,6 @@ namespace Battlesnake.PostGen.CodeGenerator {
 			}
 
 		}
-	
+
 	}
 }

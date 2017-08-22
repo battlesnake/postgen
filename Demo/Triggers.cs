@@ -11,7 +11,7 @@ namespace Demo {
 			var potato = Tables.Data().Skip(1).First();
 			var potato_func1 = Functions.Data().First();
 			var potato_func2 = Functions.Data().Skip(1).First();
-			return new [] {
+			return new[] {
 				new Trigger(
 					"potato_observer_notifier",
 					Trigger.When.After,
@@ -35,7 +35,7 @@ namespace Demo {
 		}
 
 		public static Block Make() {
-			return Block.Concat(new [] { Battlesnake.PostGen.CodeGenerator.Triggers.Generate(Data()) }, ";", ";", true);
+			return Block.Concat(new[] { Battlesnake.PostGen.CodeGenerator.Triggers.Generate(Data()) }, ";", ";", true);
 		}
 	}
 

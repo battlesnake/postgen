@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Battlesnake.PostGen.Language.Tags;
 
 namespace Battlesnake.PostGen.Language {
 
 	public abstract class Type {
 
-		public class Basic: Type {
+		/* Base / domain (also [ab]use for polymorphic types) */
+		public class Basic : Type {
 			public string name;
 
 			public Basic(string name) {
@@ -13,7 +15,19 @@ namespace Battlesnake.PostGen.Language {
 			}
 		}
 
-		public class Array: Type {
+		/* Reference to column type */
+		public class Reference : Type {
+			public Table table;
+			public Table.Column column;
+
+			public Reference(Table table, Table.Column column) {
+				this.table = table;
+				this.column = column;
+			}
+		}
+
+		/* Array of base / domain */
+		public class Array : Type {
 			public Basic type;
 
 			public Array(Basic type) {
@@ -21,7 +35,8 @@ namespace Battlesnake.PostGen.Language {
 			}
 		}
 
-		public class SetOf: Type {
+		/* Set-of base / domain / composite */
+		public class SetOf : Type {
 			public Type type;
 
 			public SetOf(Type type) {
@@ -29,13 +44,15 @@ namespace Battlesnake.PostGen.Language {
 			}
 		}
 
-		public class Structure: Type {
+		/* Composite (explicitly named or anonymous "TABLE" type) */
+		public class Composite : Type, TopLevel {
 
 			public class Field {
 				public string name;
 				public Basic type;
 
 				public Field(string name, Basic type) {
+					this.name = name;
 					this.type = type;
 				}
 			}
@@ -43,13 +60,20 @@ namespace Battlesnake.PostGen.Language {
 			public string name;
 			public List<Field> fields;
 
-			public Structure(string name, IEnumerable<Field> fields) {
+			public Composite(string name, IEnumerable<Field> fields) {
 				this.name = name;
 				this.fields = fields.ToList();
 			}
 
-			public Structure(string name, params Field[] fields)
+			public Composite(string name, params Field[] fields)
 				: this(name, fields.AsEnumerable()) {
+			}
+
+			public Composite(IEnumerable<Field> fields) : this(null, fields) {
+			}
+
+			public Composite(params Field[] fields)
+				: this(null, fields) {
 			}
 		}
 

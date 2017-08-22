@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using Block = Battlesnake.PostGen.CodeGenerator.Block;
 
 namespace Demo {

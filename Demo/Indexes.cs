@@ -10,7 +10,7 @@ namespace Demo {
 
 		public static IEnumerable<Table.Index> Data() {
 			var table = Tables.Data().Skip(1).First();
-			return new [] { 
+			return new[] {
 				new Table.Index(
 					null,
 					table,
